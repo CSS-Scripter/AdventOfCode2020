@@ -10,36 +10,9 @@ import (
 
 func main() {
 	inputNumbers := readFile()
+
 	twoNumbers(inputNumbers)
 	threeNumbers(inputNumbers)
-}
-
-func twoNumbers(inputNumbers []int) {
-	for index, number := range inputNumbers {
-		for i := index + 1; i < len(inputNumbers); i++ {
-			sum := number + inputNumbers[i]
-			if sum == 2020 {
-				fmt.Printf("Numbers: %d, %d \n", number, inputNumbers[i])
-				fmt.Printf("Sum: %d \n", number+inputNumbers[i])
-				fmt.Printf("Multiply: %d \n\n", number*inputNumbers[i])
-			}
-		}
-	}
-}
-
-func threeNumbers(inputNumbers []int) {
-	for index, number := range inputNumbers {
-		for i := index + 1; i < len(inputNumbers); i++ {
-			for j := i + 1; j < len(inputNumbers); j++ {
-				sum := number + inputNumbers[i] + inputNumbers[j]
-				if sum == 2020 {
-					fmt.Printf("Numbers: %d, %d, %d \n", number, inputNumbers[i], inputNumbers[j])
-					fmt.Printf("Sum: %d \n", number+inputNumbers[i]+inputNumbers[j])
-					fmt.Printf("Multiply: %d \n\n", number*inputNumbers[i]*inputNumbers[j])
-				}
-			}
-		}
-	}
 }
 
 func readFile() []int {
@@ -64,4 +37,34 @@ func readFile() []int {
 		log.Fatal(err)
 	}
 	return inputNumbers
+}
+
+func twoNumbers(inputNumbers []int) {
+	for index, number := range inputNumbers {
+		for i := index + 1; i < len(inputNumbers); i++ {
+			sum := number + inputNumbers[i]
+			if sum == 2020 {
+				fmt.Printf("Numbers: %d, %d \n", number, inputNumbers[i])
+				fmt.Printf("Sum: %d \n", number+inputNumbers[i])
+				fmt.Printf("Multiply: %d \n\n", number*inputNumbers[i])
+				break
+			}
+		}
+	}
+}
+
+func threeNumbers(inputNumbers []int) {
+	for index, number := range inputNumbers {
+		for i := index + 1; i < len(inputNumbers); i++ {
+			for j := i + 1; j < len(inputNumbers); j++ {
+				sum := number + inputNumbers[i] + inputNumbers[j]
+				if sum == 2020 {
+					fmt.Printf("Numbers: %d, %d, %d \n", number, inputNumbers[i], inputNumbers[j])
+					fmt.Printf("Sum: %d \n", number+inputNumbers[i]+inputNumbers[j])
+					fmt.Printf("Multiply: %d \n\n", number*inputNumbers[i]*inputNumbers[j])
+					break
+				}
+			}
+		}
+	}
 }

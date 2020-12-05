@@ -31,14 +31,13 @@ func (s *Seat) CalculateRow() {
 	currentHalfMax := maxRows
 	for step := 1; step <= rowSteps; step++ {
 		character := rune(s.RowSequence[step-1])
+		if character == 'F' {
+			currentHalfMax -= (currentHalfMax-currentHalfMin)/2 + 1
+		}
 		if character == 'B' {
 			currentHalfMin += (currentHalfMax-currentHalfMin)/2 + 1
 			currentValue = currentHalfMin
 		}
-		if character == 'F' {
-			currentHalfMax -= (currentHalfMax-currentHalfMin)/2 + 1
-		}
-		// fmt.Printf("Step: %v, being %v makes the current row between %v and %v\n", step, string(character), currentHalfMin, currentHalfMax)
 	}
 	s.Row = currentValue
 }
@@ -50,12 +49,12 @@ func (s *Seat) CalculateColumn() {
 	currentHalfMax := maxColumns
 	for step := 1; step <= columnSteps; step++ {
 		character := rune(s.ColumnSequence[step-1])
+		if character == 'L' {
+			currentHalfMax -= (currentHalfMax-currentHalfMin)/2 + 1
+		}
 		if character == 'R' {
 			currentHalfMin += (currentHalfMax-currentHalfMin)/2 + 1
 			currentValue = currentHalfMin
-		}
-		if character == 'L' {
-			currentHalfMax -= (currentHalfMax-currentHalfMin)/2 + 1
 		}
 	}
 	s.Column = currentValue

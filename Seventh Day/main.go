@@ -11,7 +11,6 @@ import (
 )
 
 var bags map[string]map[string]int
-var totalBagsContainingGoldBags int
 
 func main() {
 	parseLinesIntoBags(readFile())
@@ -64,7 +63,7 @@ func cleanupBagName(bagName string) string {
 }
 
 func partOne() {
-	totalBagsContainingGoldBags = 0
+	totalBagsContainingGoldBags := 0
 	for key := range bags {
 		if canBagContainGoldenBag(key) {
 			totalBagsContainingGoldBags++
